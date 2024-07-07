@@ -7,6 +7,8 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import lombok.RequiredArgsConstructor;
+import org.eclipse.microprofile.rest.client.inject.RestClient;
+import org.jboss.resteasy.reactive.RestPath;
 
 @Path("/employees")
 @Produces(MediaType.APPLICATION_JSON)
@@ -14,12 +16,30 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 class EmployeeResource {
 	
+	@RestClient
+	private final EmployeeRemoteClient employeeRemoteClient;
 	private final EmployeeService employeeService;
 	
 	@GET
 	public Response findAll() {
 		return Response
 				.ok(this.employeeService.findAll())
+				.build();
+	}
+	
+	@GET
+	@Path("/remote/employees")
+	public Response findAllRemoteEmployees() {
+		return Response
+				.ok(this.employeeRemoteClient.findAllEmployeesWithCheck())
+				.build();
+	}
+	
+	@GET
+	@Path("/remote/employees/{id}")
+	public Response findRemoteEmployeeById(@RestPath Integer id) {
+		return Response
+				.ok(this.employeeRemoteClient.findByIdWithCheck(id))
 				.build();
 	}
 	
