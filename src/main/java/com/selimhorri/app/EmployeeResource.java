@@ -30,17 +30,13 @@ class EmployeeResource {
 	@GET
 	@Path("/remote/employees")
 	public Response findAllRemoteEmployees() {
-		return Response
-				.ok(this.employeeRemoteClient.findAllEmployeesWithCheck())
-				.build();
+		return this.employeeRemoteClient.findAllEmployeesWithCheck();
 	}
 	
 	@GET
 	@Path("/remote/employees/{id}")
 	public Response findRemoteEmployeeById(@RestPath Integer id) {
-		return Response
-				.ok(this.employeeRemoteClient.findByIdWithCheck(id))
-				.build();
+		return this.employeeRemoteClient.findByIdWithCheck(id);
 	}
 	
 }
