@@ -1,6 +1,6 @@
-package com.selimhorri.app;
+package com.selimhorri.app.auth;
 
-import com.selimhorri.app.auth.Credential;
+import com.selimhorri.app.Employee;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,44 +9,40 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.UUID;
+import java.time.Instant;
 
 @Entity
-@Table(name = "employees")
+@Table(name = "credentials")
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 @Builder
-public class Employee {
+public class Credential {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
 	@Column(nullable = false)
-	private UUID identifier;
+	private String username;
 	
 	@Column(nullable = false)
-	private String firstname;
+	private String password;
 	
 	@Column(nullable = false)
-	private String lastname;
+	private String roles;
 	
-	@Column
-	private LocalDate hiredate;
-	
-	@OneToOne(mappedBy = "employee")
-	private Credential credential;
+	@OneToOne
+	@JoinColumn(name = "employee_id")
+	private Employee employee;
 	
 	@CreationTimestamp
 	@Column(name = "created_at", updatable = false, nullable = false)
-	private LocalDateTime createdAt;
+	private Instant createdAt;
 	
 	@UpdateTimestamp
 	@Column(name = "updated_at", nullable = false)
-	private LocalDateTime updatedAt;
+	private Instant updatedAt;
 	
 }
 

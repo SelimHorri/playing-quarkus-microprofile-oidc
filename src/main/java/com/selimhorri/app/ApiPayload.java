@@ -1,6 +1,6 @@
 package com.selimhorri.app;
 
-record ApiPayload<T>(ApiStatus status, T data) {}
+public record ApiPayload<T>(ApiStatus status, T data) {}
 
 
 

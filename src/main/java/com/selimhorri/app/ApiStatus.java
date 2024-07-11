@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-enum ApiStatus {
+public enum ApiStatus {
 	
 	SUCCESS("success"),
 	FAILURE("failure");
