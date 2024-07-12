@@ -4,8 +4,8 @@ import lombok.Getter;
 
 @Getter
 public sealed class GloabalException 
-		extends RuntimeException
-		permits ObjectNotFoundException, ObjectAlreadyExistsException {
+				extends RuntimeException
+				permits ObjectNotFoundException, ObjectAlreadyExistsException {
 	
 	private final int status;
 	private final String message;

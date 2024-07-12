@@ -1,6 +1,6 @@
 package com.selimhorri.app.auth.exception;
 
-public final class ObjectNotFoundException extends GloabalException {
+public sealed class ObjectNotFoundException extends GloabalException permits CredentialNotFoundException {
 	
 	public static final int HTTP_STATUS = 404;
 	

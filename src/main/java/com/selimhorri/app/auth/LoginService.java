@@ -1,5 +1,6 @@
 package com.selimhorri.app.auth;
 
+import com.selimhorri.app.auth.exception.CredentialNotFoundException;
 import com.selimhorri.app.auth.exception.ObjectAlreadyExistsException;
 import com.selimhorri.app.auth.exception.ObjectNotFoundException;
 import jakarta.enterprise.context.ApplicationScoped;
@@ -18,7 +19,7 @@ public class LoginService {
 	public LoginResponse login(final LoginRequest loginRequest) {
 		final var credential = this.credentialRepository
 				.findByUsername(loginRequest.username())
-				.orElseThrow(() -> new ObjectNotFoundException(
+				.orElseThrow(() -> new CredentialNotFoundException(
 						"No Such emp credentials with username: " + loginRequest.username()));
 		log.debug("==>> credential with username: {}", credential.getUsername());
 		return new LoginResponse(null);
