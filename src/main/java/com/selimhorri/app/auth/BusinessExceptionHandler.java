@@ -15,7 +15,7 @@ import jakarta.ws.rs.ext.Provider;
 import java.net.URI;
 
 @Provider
-class ExceptionHandler implements ExceptionMapper<BusinessException> {
+class BusinessExceptionHandler implements ExceptionMapper<BusinessException> {
 	
 	@Context
 	private RoutingContext routingContext;
