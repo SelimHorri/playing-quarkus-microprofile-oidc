@@ -1,8 +1,10 @@
 package com.selimhorri.app.auth.exception;
 
-public sealed class ObjectNotFoundException extends GloabalException permits CredentialNotFoundException {
+import jakarta.ws.rs.core.Response.Status;
+
+public sealed class ObjectNotFoundException extends BusinessException permits CredentialNotFoundException {
 	
-	public static final int HTTP_STATUS = 404;
+	public static final Status HTTP_STATUS = Status.NOT_FOUND;
 	
 	public ObjectNotFoundException(String message) {
 		super(HTTP_STATUS, message);
