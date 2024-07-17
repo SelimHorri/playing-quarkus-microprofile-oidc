@@ -11,13 +11,13 @@ public abstract sealed class BusinessException
 	private final int status;
 	private final String message;
 	
-	public BusinessException(Status status, String message) {
+	protected BusinessException(Status status, String message) {
 		super(message);
 		this.status = status.getStatusCode();
 		this.message = message;
 	}
 	
-	public BusinessException(String message) {
+	protected BusinessException(String message) {
 		super(message);
 		this.status = Status.INTERNAL_SERVER_ERROR.getStatusCode();
 		this.message = message;
