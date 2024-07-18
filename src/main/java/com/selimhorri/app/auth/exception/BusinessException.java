@@ -1,8 +1,10 @@
 package com.selimhorri.app.auth.exception;
 
+import io.quarkus.runtime.annotations.RegisterForReflection;
 import jakarta.ws.rs.core.Response.Status;
 import lombok.Getter;
 
+@RegisterForReflection(registerFullHierarchy = true)
 @Getter
 public abstract sealed class BusinessException 
 				extends RuntimeException

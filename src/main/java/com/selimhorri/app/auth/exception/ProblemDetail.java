@@ -2,12 +2,14 @@ package com.selimhorri.app.auth.exception;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import io.quarkus.runtime.annotations.RegisterForReflection;
 import jakarta.ws.rs.core.Response.Status;
 import lombok.*;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+@RegisterForReflection(registerFullHierarchy = true)
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @Data

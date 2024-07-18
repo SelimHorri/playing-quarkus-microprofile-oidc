@@ -6,6 +6,7 @@ import com.selimhorri.app.auth.exception.BusinessException;
 import com.selimhorri.app.auth.exception.ObjectAlreadyExistsException;
 import com.selimhorri.app.auth.exception.ObjectNotFoundException;
 import com.selimhorri.app.auth.exception.ProblemDetail;
+import io.quarkus.runtime.annotations.RegisterForReflection;
 import io.vertx.ext.web.RoutingContext;
 import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.Response;
@@ -16,6 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.net.URI;
 
+@RegisterForReflection(registerFullHierarchy = true)
 @Provider
 @Slf4j
 @RequiredArgsConstructor
