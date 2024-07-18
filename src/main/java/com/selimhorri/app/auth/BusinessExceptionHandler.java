@@ -11,14 +11,16 @@ import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.ext.ExceptionMapper;
 import jakarta.ws.rs.ext.Provider;
+import lombok.RequiredArgsConstructor;
 
 import java.net.URI;
 
 @Provider
+@RequiredArgsConstructor
 class BusinessExceptionHandler implements ExceptionMapper<BusinessException> {
 	
 	@Context
-	private RoutingContext routingContext;
+	private final RoutingContext routingContext;
 	
 	@Override
 	public Response toResponse(BusinessException e) {
