@@ -1,6 +1,6 @@
 package com.selimhorri.app.auth;
 
-import com.selimhorri.app.auth.exception.CredentialNotFoundException;
+import com.selimhorri.app.exception.CredentialNotFoundException;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;

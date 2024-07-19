@@ -1,4 +1,4 @@
-package com.selimhorri.app.auth.exception;
+package com.selimhorri.app.exception;
 
 import jakarta.ws.rs.core.Response.Status;
 

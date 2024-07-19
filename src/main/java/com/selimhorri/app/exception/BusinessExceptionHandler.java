@@ -1,11 +1,7 @@
-package com.selimhorri.app.auth;
+package com.selimhorri.app.exception;
 
 import com.selimhorri.app.ApiPayload;
 import com.selimhorri.app.ApiStatus;
-import com.selimhorri.app.auth.exception.BusinessException;
-import com.selimhorri.app.auth.exception.ObjectAlreadyExistsException;
-import com.selimhorri.app.auth.exception.ObjectNotFoundException;
-import com.selimhorri.app.auth.exception.ProblemDetail;
 import io.quarkus.runtime.annotations.RegisterForReflection;
 import io.vertx.ext.web.RoutingContext;
 import jakarta.ws.rs.core.Context;
@@ -39,7 +35,8 @@ class BusinessExceptionHandler implements ExceptionMapper<BusinessException> {
 		var pd = ProblemDetail.forStatusAndDetail(status, detail);
 		pd.setInstance(URI.create(this.routingContext.request().absoluteURI()).toString());
 		pd.addProperty("exception", e.getClass().getSimpleName());
-		log.error(pd.toString(), e);
+		log.error(pd.toString());
+		log.error("{}", e.getMessage());
 		return Response.status(status)
 				.entity(new ApiPayload<ProblemDetail>(ApiStatus.FAILURE, pd))
 				.build();

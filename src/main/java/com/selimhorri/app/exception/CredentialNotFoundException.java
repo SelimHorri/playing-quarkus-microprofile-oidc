@@ -1,4 +1,4 @@
-package com.selimhorri.app.auth.exception;
+package com.selimhorri.app.exception;
 
 public final class CredentialNotFoundException extends ObjectNotFoundException {
 	

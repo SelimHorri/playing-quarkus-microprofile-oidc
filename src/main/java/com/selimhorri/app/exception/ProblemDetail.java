@@ -1,4 +1,4 @@
-package com.selimhorri.app.auth.exception;
+package com.selimhorri.app.exception;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
