@@ -18,8 +18,8 @@ public class ProblemDetail {
 	
 	private String type;
 	private String title;
-	private int status;
-	private String detail;
+	private final int status;
+	private final String detail;
 	private String instance;
 	
 	@JsonInclude(Include.NON_EMPTY)
