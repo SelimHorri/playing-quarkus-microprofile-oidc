@@ -1,7 +1,7 @@
 package com.selimhorri.app.employee;
 
 import com.selimhorri.app.ApiPayload;
-import com.selimhorri.app.employee.application.EmployeeConsumerService;
+import com.selimhorri.app.employee.application.EmployeeInfoRetriever;
 import com.selimhorri.app.employee.application.EmployeeUsecase;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
@@ -21,7 +21,7 @@ import java.util.function.Supplier;
 @RequiredArgsConstructor
 class EmployeeResource {
 	
-	private final EmployeeConsumerService employeeConsumerService;
+	private final EmployeeInfoRetriever employeeInfoRetriever;
 	private final EmployeeUsecase employeeUsecase;
 	
 	@GET
@@ -44,11 +44,11 @@ class EmployeeResource {
 	}
 	
 	private Response findAllEmployeesWithCheck() {
-		return this.handleException(this.employeeConsumerService::findAllEmployees);
+		return this.handleException(this.employeeInfoRetriever::findAllEmployees);
 	}
 	
 	private Response findByIdWithCheck(Integer id) {
-		return this.handleException(() -> this.employeeConsumerService.findById(id));
+		return this.handleException(() -> this.employeeInfoRetriever.findById(id));
 	}
 	
 	private Response handleException(Supplier<? extends ApiPayload<?>> successfulBody) {

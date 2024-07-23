@@ -1,14 +1,13 @@
 package com.selimhorri.app.employee.application;
 
 import com.selimhorri.app.ApiPayload;
-import org.jboss.resteasy.reactive.RestPath;
 
 import java.util.List;
 
-public interface EmployeeConsumerService {
+public interface EmployeeInfoRetriever {
 	
 	ApiPayload<List<EmployeePayload>> findAllEmployees();
-	ApiPayload<List<EmployeePayload>> findById(@RestPath Integer id);
+	ApiPayload<List<EmployeePayload>> findById(Integer id);
 	
 }
 

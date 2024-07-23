@@ -1,7 +1,7 @@
 package com.selimhorri.app.employee.infrastructure;
 
 import com.selimhorri.app.ApiPayload;
-import com.selimhorri.app.employee.application.EmployeeConsumerService;
+import com.selimhorri.app.employee.application.EmployeeInfoRetriever;
 import com.selimhorri.app.employee.application.EmployeePayload;
 import jakarta.enterprise.context.ApplicationScoped;
 import lombok.RequiredArgsConstructor;
@@ -11,7 +11,7 @@ import java.util.List;
 
 @ApplicationScoped
 @RequiredArgsConstructor
-class EmployeeConsumerServiceImpl implements EmployeeConsumerService {
+class EmployeeInfoRetrieverImpl implements EmployeeInfoRetriever {
 	
 	@RestClient
 	private final EmployeeRemoteClient employeeRemoteClient;
