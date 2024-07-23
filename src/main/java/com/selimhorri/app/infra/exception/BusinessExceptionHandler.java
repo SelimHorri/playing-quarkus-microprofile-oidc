@@ -1,4 +1,4 @@
-package com.selimhorri.app.exception;
+package com.selimhorri.app.infra.exception;
 
 import com.selimhorri.app.ApiPayload;
 import com.selimhorri.app.ApiStatus;

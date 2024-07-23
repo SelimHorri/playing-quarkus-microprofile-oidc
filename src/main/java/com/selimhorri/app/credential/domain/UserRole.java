@@ -1,4 +1,4 @@
-package com.selimhorri.app.auth;
+package com.selimhorri.app.credential.domain;
 
 public enum UserRole {
 	

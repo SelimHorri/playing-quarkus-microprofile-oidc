@@ -1,4 +1,4 @@
-package com.selimhorri.app.auth;
+package com.selimhorri.app.credential.application;
 
 import io.quarkus.runtime.annotations.RegisterForReflection;
 

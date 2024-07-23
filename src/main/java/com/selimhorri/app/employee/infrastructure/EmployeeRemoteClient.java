@@ -1,5 +1,7 @@
-package com.selimhorri.app;
+package com.selimhorri.app.employee.infrastructure;
 
+import com.selimhorri.app.ApiPayload;
+import com.selimhorri.app.employee.application.EmployeePayload;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;

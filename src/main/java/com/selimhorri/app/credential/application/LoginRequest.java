@@ -1,4 +1,4 @@
-package com.selimhorri.app.auth;
+package com.selimhorri.app.credential.application;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

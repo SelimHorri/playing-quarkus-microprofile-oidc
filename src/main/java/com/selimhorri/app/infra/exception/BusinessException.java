@@ -1,4 +1,4 @@
-package com.selimhorri.app.exception;
+package com.selimhorri.app.infra.exception;
 
 import io.quarkus.runtime.annotations.RegisterForReflection;
 import jakarta.ws.rs.core.Response.Status;

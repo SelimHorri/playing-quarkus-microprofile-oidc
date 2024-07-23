@@ -1,10 +1,10 @@
-package com.selimhorri.app;
+package com.selimhorri.app.employee.application;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 
 @JsonNaming(value = PropertyNamingStrategies.SnakeCaseStrategy.class)
-record EmployeePayload(Integer id, String employeeName, Long employeeSalary, Integer employeeAge, String profileImage) {}
+public record EmployeePayload(Integer id, String employeeName, Long employeeSalary, Integer employeeAge, String profileImage) {}
 
 
 

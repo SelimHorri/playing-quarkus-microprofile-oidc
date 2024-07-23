@@ -1,4 +1,4 @@
-package com.selimhorri.app.auth;
+package com.selimhorri.app.credential.domain;
 
 import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
 import io.quarkus.panache.common.Parameters;

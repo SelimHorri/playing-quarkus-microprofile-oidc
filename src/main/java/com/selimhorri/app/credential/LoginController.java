@@ -1,5 +1,7 @@
-package com.selimhorri.app.auth;
+package com.selimhorri.app.credential;
 
+import com.selimhorri.app.credential.application.LoginRequest;
+import com.selimhorri.app.credential.application.LoginService;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.POST;
