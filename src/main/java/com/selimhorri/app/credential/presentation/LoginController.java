@@ -1,4 +1,4 @@
-package com.selimhorri.app.credential;
+package com.selimhorri.app.credential.presentation;
 
 import com.selimhorri.app.credential.application.LoginRequest;
 import com.selimhorri.app.credential.application.LoginService;

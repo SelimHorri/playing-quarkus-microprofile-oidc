@@ -1,16 +1,12 @@
-package com.selimhorri.app.employee;
+package com.selimhorri.app.employee.presentation;
 
 import com.selimhorri.app.ApiPayload;
 import com.selimhorri.app.employee.application.EmployeeInfoRetriever;
 import com.selimhorri.app.employee.application.EmployeeUsecase;
-import jakarta.ws.rs.Consumes;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import lombok.RequiredArgsConstructor;
-import org.jboss.resteasy.reactive.ClientWebApplicationException;
 import org.jboss.resteasy.reactive.RestPath;
 
 import java.util.function.Supplier;
@@ -34,35 +30,37 @@ class EmployeeResource {
 	@GET
 	@Path("/remote/employees")
 	public Response findAllRemoteEmployees() {
-		return this.findAllEmployeesWithCheck();
+		return new ResponseWrapper(this.employeeInfoRetriever::findAllEmployees)
+				.toResponse();
 	}
 	
 	@GET
 	@Path("/remote/employees/{id}")
 	public Response findRemoteEmployeeById(@RestPath Integer id) {
-		return this.findByIdWithCheck(id);
+		return new ResponseWrapper(() -> this.employeeInfoRetriever.findById(id))
+				.toResponse();
 	}
 	
-	private Response findAllEmployeesWithCheck() {
-		return this.handleException(this.employeeInfoRetriever::findAllEmployees);
-	}
-	
-	private Response findByIdWithCheck(Integer id) {
-		return this.handleException(() -> this.employeeInfoRetriever.findById(id));
-	}
-	
-	private Response handleException(Supplier<? extends ApiPayload<?>> successfulBody) {
-		try {
-			return Response
-					.ok(successfulBody.get())
-					.build();
+	private record ResponseWrapper(Supplier<? super ApiPayload<?>> payload) {
+		
+		Response toResponse() {
+			return handleException(payload);
 		}
-		catch (ClientWebApplicationException e) {
-			return Response
-					.serverError()
-					.entity("Error fetching API: " + e.getMessage())
-					.build();
+		
+		private static Response handleException(Supplier<? super ApiPayload<?>> successfulBody) {
+			try {
+				return Response
+						.ok(successfulBody.get())
+						.build();
+			}
+			catch (WebApplicationException e) {
+				return Response
+						.serverError()
+						.entity("Error fetching API: " + e.getMessage())
+						.build();
+			}
 		}
+		
 	}
 	
 }

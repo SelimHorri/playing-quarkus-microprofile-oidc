@@ -25,6 +25,7 @@ class BusinessExceptionHandler implements ExceptionMapper<BusinessException> {
 	@Override
 	public Response toResponse(BusinessException e) {
 		return switch (e) {
+			// case CredentialNotFoundException cnf -> this.response(cnf.getStatus(), cnf.getMessage(), e); 
 			case ObjectNotFoundException onf -> this.response(onf.getStatus(), onf.getMessage(), e);
 			case ObjectAlreadyExistsException oae -> this.response(oae.getStatus(), oae.getMessage(), e);
 			// case BusinessException be -> this.response(be.getStatus(), be.getMessage(), e);
