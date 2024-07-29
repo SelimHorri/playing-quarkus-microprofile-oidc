@@ -25,19 +25,18 @@ class BusinessExceptionHandler implements ExceptionMapper<BusinessException> {
 	@Override
 	public Response toResponse(BusinessException e) {
 		return switch (e) {
-			// case CredentialNotFoundException cnf -> this.response(cnf.getStatus(), cnf.getMessage(), e); 
-			case ObjectNotFoundException onf -> this.response(onf.getStatus(), onf.getMessage(), e);
-			case ObjectAlreadyExistsException oae -> this.response(oae.getStatus(), oae.getMessage(), e);
-			// case BusinessException be -> this.response(be.getStatus(), be.getMessage(), e);
+			case ObjectNotFoundException onf -> this.response(onf.getStatus(), onf.getMessage(), onf.getClass());
+			case ObjectAlreadyExistsException oae -> this.response(oae.getStatus(), oae.getMessage(), oae.getClass());
+			// case BusinessException be -> this.response(be.getStatus(), be.getMessage(), be.getClass());
 		};
 	}
 	
-	private Response response(int status, String detail, RuntimeException e) {
+	private Response response(int status, String detail, Class<? extends BusinessException> clazz) {
 		var pd = ProblemDetail.forStatusAndDetail(status, detail);
 		pd.setInstance(URI.create(this.routingContext.request().absoluteURI()).toString());
-		pd.addProperty("exception", e.getClass().getSimpleName());
+		pd.addProperty("exception", clazz.getSimpleName());
 		log.error(pd.toString());
-		log.error("{}", e.getMessage());
+		log.error("{}", detail);
 		return Response.status(status)
 				.entity(new ApiPayload<ProblemDetail>(ApiStatus.FAILURE, pd))
 				.build();
