@@ -27,7 +27,6 @@ class BusinessExceptionHandler implements ExceptionMapper<BusinessException> {
 		return switch (e) {
 			case ObjectNotFoundException onf -> this.response(onf.getStatus(), onf.getMessage(), onf.getClass());
 			case ObjectAlreadyExistsException oae -> this.response(oae.getStatus(), oae.getMessage(), oae.getClass());
-			// case BusinessException be -> this.response(be.getStatus(), be.getMessage(), be.getClass());
 		};
 	}
 	
